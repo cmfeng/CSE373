@@ -1,0 +1,41 @@
+cmf927@uw.edu, Changming Feng
+hsiaop@uw.edu, Preston Hsiao
+Programming Assignment #4: Graphs and Shortest Paths CSE373, Autumn 2015
+
+Write Up Questions
+
+1) The worst case running time for adjacentVertices is O(|E|+|V|) because 
+  it needs to go through each vertex to check if the given vertex is in the 
+  list of vertices, which is O(|V|), and it needs to add each adjacent edge 
+  to the returning set, which is O(|E|).
+  
+  The worst case running time for edgeCost is O(|E|+|V|) because 
+  it needs to go through each vertex to check if the two given vertices are in the 
+  list of vertices, which is O(|V|), and it needs to find the edge from a to b vertices
+   and get the weight, which is O(|E|). 
+   
+  The worst case running time for shortestPath is O(|V|(|E|+|V|)) because each time we 
+  select an unknown vertex and make it known, updating paths and costs of adjacent vertices is O(|E|), and 
+  finding the next unknown vertex of lowest cost is O(|V|). This can run a maximum of O(|V|) times, or the 
+  maximum number of unknown vertices. So, each time it goes through, it is O(|E|+|V|), and it can go through |V| 
+  number of times, so total worst case running time is O(|V|(|E|+|V|)).
+  
+2) In the constructor, we make copies of all of the given vertices and edges so that the client cannot access the same reference locations.
+   We make copies of each set of vertices and edges when returning the set of vertices in vertices(), edges(), and adjacentVertices(). We 
+   copy out each vertex in the list of vertices in Path returned in shortestPath. For edgeCost(), it only returns an int, so we don't need to 
+   copy that out.
+   
+3) We tested our code by adding duplicate vertices and edges, finding the shortest path from or to a vertex that doesn't exist, finding
+the shortest path from a vertex to itself, and finding the shortest path between two vertices with no path connecting them. We also tested
+the protected abstractions we created such as testing our copy in and outs. 
+
+4) We worked together on everthing. We spend 4 nights in the library coding this homework. We planned the code the first night, coded part 1 the
+second night, coded part 2 on the third night, and tested the code, created comments, and did the write up the 4th night. It is good being able to 
+think about how to code the program with two heads instead of one. In that way, errors are caught quickly, and the code can be completed successfully.
+One bad thing is that we each have different schedules, so it is sometimes challenging to meet up. 
+
+5) We did the first above and beyond prompt. We created a graph with vertices as street intersections, and edges connecting them with weights of distance in feet.
+When running FindPaths, it finds the shortest path from one intersection to another. We modeled our streets, intersections, and distances from the area between
+42rd and 11th, and 43rd and University Way. Because 43rd street and 11th are both one way streets, this creates a directed graph. The shortest path of our graph
+is the shortest way to get from one intersection to another. Now we know how to get around the 
+area to not be late for class anymore.
